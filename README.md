@@ -14,6 +14,14 @@ Herein, I bring myself up to speed with regard to iterative power method solutio
     1. set *y* to *x*
 
 # Methodologies
-As this is the first project, it is also about methodologies. 
+As this is the first project, it is also about developing a work methodology.
 
 Reading A Quick Guide to Organizing Computational Biology Projects [source](http://www.ploscompbiol.org/article/fetchObject.action?uri=info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424&representation=PDF)
+
+# Deeper Mathematics
+Reading:
+1. Olver, Introduction to Partial Differential Equations
+    1. Sturm-Liouville equations
+    2. Functional Analysis
+1. Arbenz, Lecture Notes on Solving Large Scale Eigenvalue Problems
+3. Hildebrand, Introduction to Numerical Analysis

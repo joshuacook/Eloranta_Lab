@@ -16,4 +16,4 @@ Herein, I bring myself up to speed with regard to iterative power method solutio
 # Methodologies
 As this is the first project, it is also about methodologies. 
 
-Reading A Quick Guide to Organizing Computational Biology Projects (source)[http://www.ploscompbiol.org/article/fetchObject.action?uri=info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424&representation=PDF]
+Reading A Quick Guide to Organizing Computational Biology Projects [source](http://www.ploscompbiol.org/article/fetchObject.action?uri=info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424&representation=PDF)

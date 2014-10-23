@@ -9,6 +9,6 @@ Herein, I bring myself up to speed with regard to iterative power method solutio
 
 1. Choose a random normalized starting vector, *y*
 2. while some convergence criteria is not satisfied
-    i. solve the linear equation A*y*=*x*
-    ii. normalize *x*
-    iii. set *y* to *x*
+    1. solve the linear equation A *y*=*x*
+    1. normalize *x*
+    1. set *y* to *x*

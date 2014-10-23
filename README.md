@@ -20,6 +20,7 @@ Reading A Quick Guide to Organizing Computational Biology Projects [source](http
 
 # Deeper Mathematics
 Reading:
+
 1. Olver, Introduction to Partial Differential Equations
     1. Sturm-Liouville equations
     2. Functional Analysis

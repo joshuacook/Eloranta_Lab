@@ -4,6 +4,17 @@ A first project for my work in the Lab of Dr. Jussi Eloranta at California State
 
 Herein, I bring myself up to speed with regard to iterative power method solutions to eigenproblems. 
 
+<<<<<<< HEAD
+# Project Structure
+Based on *A Quick Guide to Organizing Computational Biology Projects* by William Noble. [source](http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424)
+
+1. bin
+1. data
+1. doc
+	1. Simple Power Method
+1. results
+1. src
+=======
 
 # Simple Power Method
 
@@ -20,6 +31,7 @@ Reading A Quick Guide to Organizing Computational Biology Projects [source](http
 
 # Deeper Mathematics
 Reading:
+>>>>>>> 44575acbf6a9543c3d8651b0d0aee83ab62dfdb6
 
 1. Olver, Introduction to Partial Differential Equations
     1. Sturm-Liouville equations

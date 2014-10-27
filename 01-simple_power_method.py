@@ -11,13 +11,6 @@ for i in range(100):
 	mu = math.sqrt(y.dot(y))
 	x = y/mu
 print numpy.transpose(eig(B)[1])
-print x
-
-[[ 0.9701425   0.24253563]
- [ 0.9486833   0.31622777]]
-[ 0.9486833   0.31622777]
-
-
 
 A = numpy.random.rand(3,3)
 x = numpy.random.rand(3)
@@ -25,4 +18,5 @@ for i in range(20):
 	y = A.dot(x)
 	mu = math.sqrt(y.dot(y))
 	x = y/mu
-np.transpose(eig(A)[1]),x
+
+print np.transpose(eig(A)[1]),x

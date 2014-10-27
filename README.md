@@ -13,7 +13,7 @@ Based on *A Quick Guide to Organizing Computational Biology Projects* by William
 	1. Simple Power Method
 1. results
 1. src
-=======
+
 
 # Simple Power Method
 

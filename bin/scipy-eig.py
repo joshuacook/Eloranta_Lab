@@ -14,7 +14,7 @@ X = np.dot(X, X.T) #create a symmetric matrix
 start = clock()
 evals_large, evecs_large = largest_eigh(X, eigvals=(N-k,N-1))
 elapsed = (clock() - start)
-print "eigh elapsed time: ", elapsed
+v
 
 # Benchmark the sparse routine
 start = clock()

@@ -2,6 +2,7 @@ import numpy as np
 import numpy.linalg as la
 import math, time
 import matplotlib.pyplot as plt
+from scipy.sparse.linalg.eigen.arpack import eigsh as largest_eigsh
 
 '''This script runs a Cayley Expansion and Power Iteration method to find the first eigenvector of a random matrix.'''
 
@@ -9,7 +10,7 @@ k = 600
 eps = 10E-6
 times = np.zeros((k,2))
 H = np.random.rand(k+1,k+1)
-H = H.T.dot(H)
+H = np.dot(H,H.T)
 
 for i in range(k-50):
 	print i
@@ -41,4 +42,4 @@ plt.plot(times[:k-50,0],times[:k-50,1])
 
 plt.show()
 
-np.savetxt("cayle_n500.csv",times,fmt='%.4e')
+np.savetxt("cayley_n600.csv",times,fmt='%.4e')

@@ -18,7 +18,7 @@ for i in range(k-50):
 	print i
 	i = i+2
 	n = i
-	conv = 1
+	err = 1
 
 
 	start = time.clock()
@@ -28,11 +28,11 @@ for i in range(k-50):
 	CayleyN = (np.identity(n)-0.5*H[0:n,0:n])
 	CayleyP = (np.identity(n)+0.5*H[0:n,0:n])
 
-	while(conv > eps):
+	while(err > eps):
 		phi1 = la.solve(CayleyP,CayleyN.dot(phi0))
 		mu = math.sqrt(phi1.dot(phi1))
 		phi1 = phi1/mu  
-		conv = math.sqrt((np.abs(phi1)-np.abs(phi0)).dot(np.abs(phi1)-np.abs(phi0)))
+		err = math.sqrt(2)*math.sqrt(abs(phi1.dot(int_H.dot(int_H)).dot(phi1)- (phi1.dot(int_H).dot(phi1))**2))
 		phi0 = phi1
 
 	end = time.clock()

@@ -2,10 +2,13 @@ import numpy as np
 import numpy.linalg as la
 import math, time
 import matplotlib.pyplot as plt
+from sys import argv
 
 '''This script runs a Cayley Expansion and Power Iteration method to find the first eigenvector of a random matrix.'''
 
-k = 600
+k = int(argv[1])
+print k 
+
 eps = 10E-6
 times = np.zeros((k,2))
 H = np.random.rand(k+1,k+1)

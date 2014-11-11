@@ -11,6 +11,7 @@ from scipy.sparse.linalg import eigsh
 from scipy.sparse.linalg.dsolve import linsolve as linsolve
 import datetime
 
+
 k = 600
 
 eps = 10E-6
@@ -21,7 +22,7 @@ H = H.T.dot(H)
 file = datetime.datetime.now().strftime("%Y%m%d%H%M%S")+".csv"
 
 for i in range(k):
-	print i
+	print "%d " % i
 	i = i+3
 	n = i
 

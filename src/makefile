@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I ~/src/OpenBLAS/ -L ~/src/OpenBLAS/ -lopenblas -lpthread -lgfortran
+CFLAGS=-I ~/bin/OpenBLAS/ -L ~/bin/OpenBLAS/ -lopenblas -lpthread -lgfortran
 
 %.o: %.c 
 	$(CC) -c -o $@ $< $(CFLAGS)

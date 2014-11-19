@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <cblas.h>
+#include "../../OpenBLAS/cblas.h"
 #include <math.h>
+
+
 
 int main(int argc, char* argv[])
 {
@@ -12,7 +14,10 @@ int main(int argc, char* argv[])
 					 -12,  -5};
 					 
 	double mu;
-					 
+    double mu_inv;
+    int one = 1;
+    int two = 2;
+    char no_trans='N';					 
 	double x[2] ;	
 	x[0] = rand()%10;
 	x[1] = rand()%10;
@@ -23,13 +28,14 @@ int main(int argc, char* argv[])
 
 	for (i = 0; i < 100; i++){
 	      	// row_order  transform lenY lenX alpha  a  lda  X  incX  beta  Y, incY 
-		cblas_dgemv(102,111, 2, 2, 1, B, 2, x, 1, 1, y, 1);
+		dgemv_(&no_trans, &two, &two, &one, B, &two, x, &one, &one, y, &one);
 			// elements X incX Y incY 
-		mu = sqrt(cblas_ddot (2, y, 1, y, 1));
-		printf("mu: %f\n",mu);
+		mu = sqrt(ddot_ (&two, y, &one, y, &one));
+		mu_inv = 1/mu;
+        printf("mu: %f\n",mu);
 			// elements alpha X intX Y intY(y:= a*x+y)
 		printf("y: %f, %f\n",y[0], y[1]);
-		cblas_dscal (2, 1/mu, y, 1);
+		dscal_(&two, &mu_inv, &y, &one);
 		printf("y: %f, %f\n",y[0], y[1]);		
 		cblas_dcopy (2, y, 1, x, 1);
 		printf("y: %f, %f\n",y[0], y[1]);

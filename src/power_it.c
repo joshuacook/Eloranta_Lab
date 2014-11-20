@@ -3,8 +3,10 @@
 #include "../../OpenBLAS/cblas.h"
 #include <math.h>
 
-
-
+extern void dgemv_(char* Trans, int* M, int* N, double* alpha, double* A, int* lda, double* X, int* incX, double* beta, double* Y, int* incY );
+extern double ddot_(int* N,double* X,int* incX,double* Y,int* incY);
+extern void dscal_(int* N,double* alpha,double* X, int* incX); 
+extern void dcopy_(int* N,double* X, int* incX, double* Y, int* incY);
 int main(int argc, char* argv[])
 {
 	int i;
@@ -12,7 +14,8 @@ int main(int argc, char* argv[])
 
 	double B[2*2] = {  2,  1,
 					 -12,  -5};
-					 
+  double alpha = 1.0;
+  double beta = 1.0;					 
 	double mu;
     double mu_inv;
     int one = 1;
@@ -28,16 +31,16 @@ int main(int argc, char* argv[])
 
 	for (i = 0; i < 100; i++){
 	      	// row_order  transform lenY lenX alpha  a  lda  X  incX  beta  Y, incY 
-		dgemv_(&no_trans, &two, &two, &one, B, &two, x, &one, &one, y, &one);
+		dgemv_(&no_trans, &two, &two, &alpha, B, &two, x, &one, &beta, y, &one);
 			// elements X incX Y incY 
 		mu = sqrt(ddot_ (&two, y, &one, y, &one));
 		mu_inv = 1/mu;
         printf("mu: %f\n",mu);
 			// elements alpha X intX Y intY(y:= a*x+y)
 		printf("y: %f, %f\n",y[0], y[1]);
-		dscal_(&two, &mu_inv, &y, &one);
+		dscal_(&two, &mu_inv, y, &one);
 		printf("y: %f, %f\n",y[0], y[1]);		
-		cblas_dcopy (2, y, 1, x, 1);
+		dcopy_(&two, y,&one, x,&one);
 		printf("y: %f, %f\n",y[0], y[1]);
 	}
 

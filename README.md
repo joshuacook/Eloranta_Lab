@@ -1,11 +1,11 @@
 # Imaginary Time Progagation Eigensolver
-Numerical Approach {#numerical-approach .unnumbered}
+Numerical Approach
 ==================
 
-Imaginary Time Propagation {#imaginary-time-propagation .unnumbered}
+Imaginary Time Propagation
 --------------------------
 
 Matrix eigenvalue problems appear in many different areas of natural
 sciences and it is therefore important to improve the computational
 efficiency of the current algorithms for solving such problems
-numerically.$^1$ 
+numerically.

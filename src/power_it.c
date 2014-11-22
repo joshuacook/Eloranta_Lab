@@ -2,11 +2,8 @@
 #include <stdlib.h>
 #include "../../OpenBLAS/cblas.h"
 #include <math.h>
+#include "blas_fortran_double.h"
 
-extern void dgemv_(char* Trans, int* M, int* N, double* alpha, double* A, int* lda, double* X, int* incX, double* beta, double* Y, int* incY );
-extern double ddot_(int* N,double* X,int* incX,double* Y,int* incY);
-extern void dscal_(int* N,double* alpha,double* X, int* incX); 
-extern void dcopy_(int* N,double* X, int* incX, double* Y, int* incY);
 int main(int argc, char* argv[])
 {
 	int i;

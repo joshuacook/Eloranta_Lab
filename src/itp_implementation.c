@@ -3,17 +3,51 @@
 #include <math.h>
 #include <time.h>
 
+void print_matrix(double * A, int n, int m);
+void create_matrix(double * A, int n, int m);
+
 int main(int argc, char* argv[]){
+	int n = 4;
+	double A[n*n];
 
-	time_t timer;
-	
-	srand48(time(&timer));
+	create_matrix(A,n,n);
 
-	printf("%f %f \n", drand48(),drand48() );
+	print_matrix(A,n,n);
 
 	return 0;
 
 }
+
+void create_matrix(double * A, int m, int n){
+	time_t timer;
+	int i,j;
+
+	srand48(time(&timer));
+	
+	for (i = 0; i < n; i++){
+		for (j = 0; j < m; j++){
+			A[i*m+j] = (i+1)*(j+1);
+			printf("element %d, %d at A[%d] is %f\n", j,i,i*m+j,A[i*m+j]);
+		}
+	}
+}
+
+void print_matrix(double * A, int n, int m){
+	int i,j;
+	for (i=0; i < n*n; i++){
+		printf("%f\n",A[i]);
+}
+	for (i = 0; i < n; i++){
+		for (j = 0; j < m; j++){
+			printf("element %d,%d: %f\n", i,j,(float)A[j*(n+i)]);
+		}
+	}
+}
+
+
+
+
+
 
 
 

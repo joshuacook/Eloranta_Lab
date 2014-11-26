@@ -41,7 +41,7 @@ void print_matrix(double * A, int n, int m){
 }
 
 
-int itp_method_test(int n){
+int itp_method_test(int n,int print_mat){
 
 	// declare necessary variables
  	int i;
@@ -60,6 +60,38 @@ int itp_method_test(int n){
   double phi0[n];
  	double phi1[n];
 
+ 	// run test on a matrix of size n
+ 	printf("Find an eigenvector for an %d by %d matrix", n,n);
+  create_matrix(H,n,n);
+  if(print_mat==1){
+		print_matrix(H,n,n);
+	}
+
+  // multiply H by its transpose to make it symmetic and thus Hermitian
+  
+
+  // preInvert
+
+  err = 1;
+
+ 	// randomize phi
+
+// 	// take the Cayley form of H
+// 	// CayleyN = (np.identity(n)-0.5*H)
+// 	// CayleyP = (np.identity(n)+0.5*H)
+// 	
+// 	// invert Cayley P
+// 	// CayleyP_inv = la.inv(CayleyP)
+// 
+//  // iterate 
+// 	/* while(err > eps):
+// 	phi1 = CayleyP_inv.dot(CayleyN.dot(phi0))
+// 	mu = math.sqrt(phi1.dot(phi1))
+// 	phi1 = phi1/mu  
+// 	err = math.sqrt(2)*math.sqrt(abs(phi1.dot(H.dot(H)).dot(phi1)- (phi1.dot(H).dot(phi1))**2))
+// 	phi0 = phi1 */
+// 
+
 	return 0; 	
 }
 
@@ -68,12 +100,7 @@ int itp_method_test(int n){
 
 
 // 	
-// 	// run test on a matrix of size n
-// 	printf("Find an eigenvector for an %d by %d matrix", n,n);
-// 	for(int i = 0; i < n*n ; i++ ){
-// 		H[i]=rand();
-// 	}
-// 
+/ 
 //  // generate a random matrix of size n x n
 // 	// H = np.random.rand(2**i,2**i)
 // 	// multiply H by its transpose to make it symmetric and thus Hermitian

@@ -24,23 +24,18 @@ void create_matrix(double * A, int m, int n){
 
 	srand48(time(&timer));
 	
-	for (i = 0; i < n; i++){
-		for (j = 0; j < m; j++){
-			A[i*m+j] = (i+1)*(j+1);
-			printf("element %d, %d at A[%d] is %f\n", j,i,i*m+j,A[i*m+j]);
-		}
+	for (i = 0; i < m*n; i++){
+		A[i] = drand48();
 	}
 }
 
 void print_matrix(double * A, int n, int m){
 	int i,j;
-	for (i=0; i < n*n; i++){
-		printf("%f\n",A[i]);
-}
-	for (i = 0; i < n; i++){
-		for (j = 0; j < m; j++){
-			printf("element %d,%d: %f\n", i,j,(float)A[j*(n+i)]);
+	for (i = 0; i < m; i++){
+		for (j = 0; j < n; j++){
+			printf("%f ", (float)A[j*m+i]);
 		}
+		printf("\n");	
 	}
 }
 

@@ -5,6 +5,7 @@
 
 void print_matrix(double * A, int n, int m);
 void create_matrix(double * A, int n, int m);
+int itp_method_test(int n);
 
 int main(int argc, char* argv[]){
 	int n = 4;
@@ -40,30 +41,32 @@ void print_matrix(double * A, int n, int m){
 }
 
 
+int itp_method_test(int n){
+
+	// declare necessary variables
+ 	int i;
+  int err;
+ 	double H[n*n];
+ 	double CayleyN[n*n];
+ 	double CayleyP[n*n];
+ 	double CayleyP_inv[n*n];
+ 	double alpha = 1.0;
+  double beta = 1.0;					 
+ 	double mu;
+  double mu_inv;
+  int one = 1;
+  int two = 2;
+  char no_trans='N';	
+  double phi0[n];
+ 	double phi1[n];
+
+	return 0; 	
+}
 
 
 
 
 
-
-// int itp_method_test(int n){
-// 	
-// 	// declare necessary variables
-// 	int i;
-//  int err;
-// 	double H[n*n];
-// 	double CayleyN[n*n];
-// 	double CayleyP[n*n];
-// 	double CayleyP_inv[n*n];
-// 	double alpha = 1.0;
-//  double beta = 1.0;					 
-// 	double mu;
-//  double mu_inv;
-//  int one = 1;
-//  int two = 2;
-//  char no_trans='N';	
-//  double phi0[n];
-// 	double phi1[n];*/
 // 	
 // 	// run test on a matrix of size n
 // 	printf("Find an eigenvector for an %d by %d matrix", n,n);

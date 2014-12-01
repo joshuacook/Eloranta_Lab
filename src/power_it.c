@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../../OpenBLAS/cblas.h"
 #include <math.h>
-#include "blas_fortran_double.h"
+#include "/home/joshuacook/src/ITP_Eigensolver/src/blas_fortran_double.h"
 
 int main(int argc, char* argv[])
 {
@@ -23,7 +23,6 @@ int main(int argc, char* argv[])
 	x[1] = rand()%10;
 	printf("x: %f, %f\n",x[0], x[1]);
 	
-
 	double y[2] ;
 
 	for (i = 0; i < 100; i++){

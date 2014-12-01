@@ -32,3 +32,12 @@ extern void dscal_(int* N,double* alpha,double* X, int* incX);
 extern void dgemv_(char* Trans, int* M, int* N, double* alpha, 
 					double* A, int* lda, double* X, int* incX, 
 					double* beta, double* Y, int* incY );
+
+//------------------------------------------------------ Level 3 Routines -- //
+// BLAS Level 3 routines perform matrix-matrix operations.
+
+// ?gemm
+// Computes a scalar-matrix-matrix product and adds the result to a scalar-matrix product.
+extern void dgemm_(char * transa, char* transb, int* m, int* n, int* k, double* alpha, double* A, int* lda, double* B, int* ldb, double* beta, double* C, int* ldc);
+
+

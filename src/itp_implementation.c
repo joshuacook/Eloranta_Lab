@@ -2,19 +2,21 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include "blas_fortran_double.h"
 
 void print_matrix(double * A, int n, int m);
 void create_matrix(double * A, int n, int m);
-int itp_method_test(int n);
+int itp_method_test(int n, int print_mat);
 
 int main(int argc, char* argv[]){
-	int n = 4;
+	int n = 6;
 	double A[n*n];
 
-	create_matrix(A,n,n);
+	// create_matrix(A,n,n);
 
-	print_matrix(A,n,n);
+	// print_matrix(A,n,n);
 
+  itp_method_test(4,1);
 	return 0;
 
 }
@@ -47,28 +49,33 @@ int itp_method_test(int n,int print_mat){
  	int i;
   int err;
  	double H[n*n];
+  double Hh[n*n];
  	double CayleyN[n*n];
  	double CayleyP[n*n];
  	double CayleyP_inv[n*n];
  	double alpha = 1.0;
-  double beta = 1.0;					 
+  double beta = 0.0;					 
  	double mu;
   double mu_inv;
   int one = 1;
   int two = 2;
-  char no_trans='N';	
+  char no_trans='N';
+  char trans='T';	
   double phi0[n];
  	double phi1[n];
 
+
+
  	// run test on a matrix of size n
- 	printf("Find an eigenvector for an %d by %d matrix", n,n);
+ 	printf("Find an eigenvector for an %d by %d matrix\n", n,n);
   create_matrix(H,n,n);
   if(print_mat==1){
 		print_matrix(H,n,n);
 	}
 
-  // multiply H by its transpose to make it symmetic and thus Hermitian
-  
+  // multiply H by its transpose to make it symmetric and thus Hermitian
+  dgemm_(&no_trans,&trans,&n,&n,&n,&alpha,H,&n,H,&n,&beta,Hh,&n);
+  print_matrix(Hh,n,n);
 
   // preInvert
 
@@ -100,7 +107,7 @@ int itp_method_test(int n,int print_mat){
 
 
 // 	
-/ 
+// 
 //  // generate a random matrix of size n x n
 // 	// H = np.random.rand(2**i,2**i)
 // 	// multiply H by its transpose to make it symmetric and thus Hermitian

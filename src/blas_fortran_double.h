@@ -15,6 +15,10 @@
 //------------------------------------------------------ Level 1 Routines -- //
 // BLAS Level 1 routines and functions perform vector-vector operations. 
 
+int test(){
+  printf("test.\n");
+}
+
 // ?copy - Copies vector to another vector.
 extern void dcopy_(int* N,double* X, int* incX, double* Y, int* incY);
 

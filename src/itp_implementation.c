@@ -1,29 +1,32 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
 #include "blas_fortran_double.h"
 
+#define NEWLINE printf("\n");
+
 void print_matrix(double * A, int n, int m);
-void create_matrix(double * A, int n, int m);
+void print_vector(double * A, int n);
+void random_matrix(double * A, int n, int m);
+void random_vector(double *A, int n);
+void identity_matrix(double * I, int n);
 int itp_method_test(int n, int print_mat);
+
 
 int main(int argc, char* argv[]){
 	int n = 6;
 	double A[n*n];
-
-	// create_matrix(A,n,n);
-
-	// print_matrix(A,n,n);
 
   itp_method_test(4,1);
 	return 0;
 
 }
 
-void create_matrix(double * A, int m, int n){
+void random_matrix(double * A, int m, int n){
 	time_t timer;
-	int i,j;
+	int i;
 
 	srand48(time(&timer));
 	
@@ -32,15 +35,48 @@ void create_matrix(double * A, int m, int n){
 	}
 }
 
+void identity_matrix(double * I, int n){
+  int i;
+
+  for(i = 0; i < n + 1; i++){
+    I[i*(n+1)] = 1;
+  } 
+}
+
+void random_vector(double * A, int n){
+  time_t timer;
+  int i;
+
+  srand48(time(&timer));
+
+  for (i = 0; i < n; i++){
+    A[i] = drand48();
+  } 
+}
+
+void print_vector(double * A, int n){
+  int i;
+  printf("<");
+  for (i = 0; i < n-1; i++){
+    printf("%f, ", (float)A[i]);
+  }
+  printf("%f", (float)A[i]);
+  printf(">");
+  NEWLINE;
+  NEWLINE;
+}
+
 void print_matrix(double * A, int n, int m){
 	int i,j;
 	for (i = 0; i < m; i++){
 		for (j = 0; j < n; j++){
 			printf("%f ", (float)A[j*m+i]);
 		}
-		printf("\n");	
+		NEWLINE;	
 	}
+  NEWLINE;
 }
+
 
 
 int itp_method_test(int n,int print_mat){
@@ -49,12 +85,14 @@ int itp_method_test(int n,int print_mat){
  	int i;
   int err;
  	double H[n*n];
-  double Hh[n*n];
+  double I[n*n];
  	double CayleyN[n*n];
  	double CayleyP[n*n];
  	double CayleyP_inv[n*n];
- 	double alpha = 1.0;
-  double beta = 0.0;					 
+ 	double d_zero = 0.0;
+  double d_neghalf = -0.5;
+  double d_poshalf = 0.5;
+  double d_one = 1.0;					 
  	double mu;
   double mu_inv;
   int one = 1;
@@ -68,14 +106,18 @@ int itp_method_test(int n,int print_mat){
 
  	// run test on a matrix of size n
  	printf("Find an eigenvector for an %d by %d matrix\n", n,n);
-  create_matrix(H,n,n);
+  random_matrix(H,n,n);
   if(print_mat==1){
 		print_matrix(H,n,n);
 	}
 
   // multiply H by its transpose to make it symmetric and thus Hermitian
-  dgemm_(&no_trans,&trans,&n,&n,&n,&alpha,H,&n,H,&n,&beta,Hh,&n);
-  print_matrix(Hh,n,n);
+  // one*H*H'+zero*CayleyN
+  dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,H,&n,&d_zero,CayleyN,&n);
+  // one*H*H'+zero*CayleyP
+  dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,H,&n,&d_zero,CayleyP,&n);
+  print_matrix(CayleyN,n,n);
+  print_matrix(CayleyP,n,n);
 
   // preInvert
 
@@ -83,10 +125,20 @@ int itp_method_test(int n,int print_mat){
 
  	// randomize phi
 
-// 	// take the Cayley form of H
-// 	// CayleyN = (np.identity(n)-0.5*H)
-// 	// CayleyP = (np.identity(n)+0.5*H)
-// 	
+  random_vector(phi0,n);
+  print_vector(phi0,n);
+
+ 	// take the Cayley form of H
+  identity_matrix(I,n);
+  print_matrix(I,n,n);
+
+  // CayleyN = (one*I*I-0.5*CayleyN)
+  dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_neghalf,CayleyN,&n);
+  print_matrix(CayleyN,n,n);
+ 	// CayleyP = (one*I*I+0.5*CayleyP)
+  dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_poshalf,CayleyP,&n);
+  print_matrix(CayleyP,n,n);
+
 // 	// invert Cayley P
 // 	// CayleyP_inv = la.inv(CayleyP)
 // 

@@ -44,4 +44,8 @@ extern void dgemv_(char* Trans, int* M, int* N, double* alpha,
 // Computes a scalar-matrix-matrix product and adds the result to a scalar-matrix product.
 extern void dgemm_(char * transa, char* transb, int* m, int* n, int* k, double* alpha, double* A, int* lda, double* B, int* ldb, double* beta, double* C, int* ldc);
 
+// LAPACK Routines
+extern void dgetri_ ( int* n, const void* A, int* lda,
+    int* ipiv, const void* work, int* lwork, int* info );
 
+extern void dgetrf_ ( int* m, int* n, const void* a, int* lda, int* ipiv, int* info );

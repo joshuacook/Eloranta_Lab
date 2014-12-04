@@ -45,6 +45,16 @@ extern void dgemv_(char* Trans, int* M, int* N, double* alpha,
 extern void dgemm_(char * transa, char* transb, int* m, int* n, int* k, double* alpha, double* A, int* lda, double* B, int* ldb, double* beta, double* C, int* ldc);
 
 // LAPACK Routines
+// Variables 
+// m - the number of rows in a
+// n - the number of columns in a
+// A - a matrix
+// lda - the leading dimension of A
+// ipiv - an output array, the pivot variables
+// work - a workspace array 
+// lwork - the size of work, lwork geq n
+// info - result (0, successful,-i,the ith variablehas an illegal parameter, i, matrix is singular and u_ii is zero
+//
 extern void dgetri_ ( int* n, const void* A, int* lda,
     int* ipiv, const void* work, int* lwork, int* info );
 

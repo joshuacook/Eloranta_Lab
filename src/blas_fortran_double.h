@@ -15,10 +15,6 @@
 //------------------------------------------------------ Level 1 Routines -- //
 // BLAS Level 1 routines and functions perform vector-vector operations. 
 
-int test(){
-  printf("test.\n");
-}
-
 // ?copy - Copies vector to another vector.
 extern void dcopy_(int* N,double* X, int* incX, double* Y, int* incY);
 
@@ -54,8 +50,24 @@ extern void dgemm_(char * transa, char* transb, int* m, int* n, int* k, double* 
 // work - a workspace array 
 // lwork - the size of work, lwork geq n
 // info - result (0, successful,-i,the ith variablehas an illegal parameter, i, matrix is singular and u_ii is zero
-//
-extern void dgetri_ ( int* n, const void* A, int* lda,
-    int* ipiv, const void* work, int* lwork, int* info );
 
-extern void dgetrf_ ( int* m, int* n, const void* a, int* lda, int* ipiv, int* info );
+// LU decomoposition of a general matrix                                                                                                    
+extern  void dgetrf_(int* M, int *N, double* A, int* lda, int* IPIV, int* INFO);                                                            
+// generate inverse of a matrix given its LU decomposition                                                                                  
+extern  void dgetri_(int* N, double* A, int* lda, int* IPIV, double* WORK, int* lwork, int* INFO);                                          
+
+void inverse(double* A, int N)                                                                                                              
+{                                                                                                                                           
+   int *IPIV;                                                                                                                              
+   IPIV = (int *)malloc(sizeof(int)*(N+1));                                                                                                
+   int LWORK = N*N;                                                                                                                        
+   double *WORK;                                                                                                                           
+   WORK = (double *)malloc(sizeof(double)*LWORK);                                                                                          
+   int INFO;                                                                                                                               
+                                                                                                                                            
+   dgetrf_(&N,&N,A,&N,IPIV,&INFO);                                                                                                         
+   dgetri_(&N,A,&N,IPIV,WORK,&LWORK,&INFO);                                                                                                
+                                                                                                                                           
+   free(IPIV);                                                                                                                             
+   free(WORK);                                                                                                                             
+}                                  

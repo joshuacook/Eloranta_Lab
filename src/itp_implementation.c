@@ -87,7 +87,6 @@ int itp_method_test(int n,int print_mat){
  	double H[n*n];
   double I[n*n];
  	double CayleyN[n*n];
- 	double CayleyP[n*n];
  	double CayleyP_inv[n*n];
  	double d_zero = 0.0;
   double d_neghalf = -0.5;
@@ -114,12 +113,10 @@ int itp_method_test(int n,int print_mat){
   // multiply H by its transpose to make it symmetric and thus Hermitian
   // one*H*H'+zero*CayleyN
   dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,H,&n,&d_zero,CayleyN,&n);
-  // one*H*H'+zero*CayleyP
-  dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,H,&n,&d_zero,CayleyP,&n);
+  // one*H*H'+zero*CayleyP_inv
+  dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,H,&n,&d_zero,CayleyP_inv,&n);
   print_matrix(CayleyN,n,n);
-  print_matrix(CayleyP,n,n);
-
-  // preInvert
+  print_matrix(CayleyP_inv,n,n);
 
   err = 1;
 
@@ -136,12 +133,13 @@ int itp_method_test(int n,int print_mat){
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_neghalf,CayleyN,&n);
   print_matrix(CayleyN,n,n);
  	// CayleyP = (one*I*I+0.5*CayleyP)
-  dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_poshalf,CayleyP,&n);
-  print_matrix(CayleyP,n,n);
+  dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_poshalf,CayleyP_inv,&n);
+  print_matrix(CayleyP_inv,n,n);
 
-// 	// invert Cayley P
-// 	// CayleyP_inv = la.inv(CayleyP)
-// 
+// preInvert
+  inverse(CayleyP_inv,n);
+  print_matrix(CayleyP_inv,n,n); 
+
 //  // iterate 
 // 	/* while(err > eps):
 // 	phi1 = CayleyP_inv.dot(CayleyN.dot(phi0))

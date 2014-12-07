@@ -83,8 +83,12 @@ int itp_method_test(int n,int print_mat){
 
 	// declare necessary variables
  	int i;
-  int err;
+  double err;
+  double err1;
+  double err2;
+  double eps = 10E-6;
  	double H[n*n];
+  double HdotH[n*n];
   double I[n*n];
  	double CayleyN[n*n];
  	double CayleyP_inv[n*n];
@@ -100,7 +104,7 @@ int itp_method_test(int n,int print_mat){
   char trans='T';	
   double phi0[n];
  	double phi1[n];
-
+  double phitemp[n];
 
 
  	// run test on a matrix of size n
@@ -143,12 +147,18 @@ int itp_method_test(int n,int print_mat){
   inverse(CayleyP_inv,n);
   print_matrix(CayleyP_inv,n,n); 
 
-//  // iterate 
-// 	/* while(err > eps):
-// 	phi1 = CayleyP_inv.dot(CayleyN.dot(phi0))
-// 	mu = math.sqrt(phi1.dot(phi1))
-// 	phi1 = phi1/mu  
+  // iterate 
+ 	// repeatedly solve phi1 = CayleyP_inv*CayleyN*phi0 
+  while(err > eps){
+  dgemv_(&no_trans,&n,&n, &d_one,CayleyN,&n,phi0,&one,&d_zero,phitemp,&one);
+  dgemv_(&no_trans,&n,&n, &d_one,CayleyP_inv,&n,phitemp,&one,&d_zero,phi1,&one);
+  mu = dnrm2_(&n,phi1,&one};
+  mu_inv = 1/mu;
+  dscal_(&n,&mu_inv,&phi1,&one);
 // 	err = math.sqrt(2)*math.sqrt(abs(phi1.dot(H.dot(H)).dot(phi1)- (phi1.dot(H).dot(phi1))**2))
+  dgemv_(&no_trans,&n,&n, &d_one,HdotH,&n,phi1,&one,&d_zero,phitemp,&one);
+  err1 = ddot_(&n,phi1,&one,phitemp,&one);
+  dgemv_(&no_trans,&n,&n, &d_one,H,&n,phi1,&one,&d_zero,phitemp,&one);
 // 	phi0 = phi1 */
 // 
 

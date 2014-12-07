@@ -24,6 +24,9 @@ extern double ddot_(int* N, double* X, int* incX, double* Y, int* incY);
 // ?scal - Computes the product of a vector by a scalar.
 extern void dscal_(int* N,double* alpha,double* X, int* incX); 
 
+// ?nrm2 - Computes the Euclidean norm of a vector.
+extern double dnrm2(int* N, double* X, int* incX)
+
 //------------------------------------------------------ Level 2 Routines -- //
 // BLAS Level 2 routines perform matrix-vector operations.
 

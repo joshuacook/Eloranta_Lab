@@ -88,6 +88,7 @@ int itp_method_test(int n,int print_mat){
   double err2;
   double eps = 10E-6;
  	double H[n*n];
+  double Htemp[n*n];
   double HdotH[n*n];
   double I[n*n];
  	double CayleyN[n*n];
@@ -106,6 +107,7 @@ int itp_method_test(int n,int print_mat){
  	double phi1[n];
   double phitemp[n];
 
+  identity_matrix(I,n);
 
  	// run test on a matrix of size n
  	printf("Find an eigenvector for an %d by %d matrix\n", n,n);
@@ -115,12 +117,10 @@ int itp_method_test(int n,int print_mat){
 	}
 
   // multiply H by its transpose to make it symmetric and thus Hermitian
-  // one*H*H'+zero*CayleyN
-  dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,H,&n,&d_zero,CayleyN,&n);
-  // one*H*H'+zero*CayleyP_inv
-  dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,H,&n,&d_zero,CayleyP_inv,&n);
+  dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,H,&n,&d_zero,Htemp,&n);
+  dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,Htemp,&n,I,&n,&d_zero,H,&n);
   printf("Generated matrix\n");
-  print_matrix(CayleyN,n,n);
+  print_matrix(H,n,n);
 
   err = 1;
 
@@ -131,14 +131,15 @@ int itp_method_test(int n,int print_mat){
   print_vector(phi0,n);
 
  	// take the Cayley form of H
-  identity_matrix(I,n);
 
   // CayleyN = (one*I*I-0.5*CayleyN)
   printf("CayleyN of generated matrix\n");
+  dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,I,&n,&d_zero,CayleyN,&n);
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_neghalf,CayleyN,&n);
   print_matrix(CayleyN,n,n);
  	// CayleyP = (one*I*I+0.5*CayleyP)
  	printf("CayleyP of generated matrix\n");
+  dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,I,&n,&d_zero,CayleyP_inv,&n);
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_poshalf,CayleyP_inv,&n);
   print_matrix(CayleyP_inv,n,n);
 
@@ -152,15 +153,20 @@ int itp_method_test(int n,int print_mat){
   while(err > eps){
   dgemv_(&no_trans,&n,&n, &d_one,CayleyN,&n,phi0,&one,&d_zero,phitemp,&one);
   dgemv_(&no_trans,&n,&n, &d_one,CayleyP_inv,&n,phitemp,&one,&d_zero,phi1,&one);
-  mu = dnrm2_(&n,phi1,&one};
+  mu = dnrm2_(&n,phi1,&one);
   mu_inv = 1/mu;
-  dscal_(&n,&mu_inv,&phi1,&one);
+  dscal_(&n,&mu_inv,phi1,&one);
 // 	err = math.sqrt(2)*math.sqrt(abs(phi1.dot(H.dot(H)).dot(phi1)- (phi1.dot(H).dot(phi1))**2))
   dgemv_(&no_trans,&n,&n, &d_one,HdotH,&n,phi1,&one,&d_zero,phitemp,&one);
   err1 = ddot_(&n,phi1,&one,phitemp,&one);
   dgemv_(&no_trans,&n,&n, &d_one,H,&n,phi1,&one,&d_zero,phitemp,&one);
-// 	phi0 = phi1 */
-// 
+  err2 = ddot_(&n,phi1,&one,phitemp,&one);
+  err2 = err2 * err2;
+  err = sqrt(abs(err1)-err2);
+  dcopy_(&n,phi1,&one,phi0,&one);
+  }
+
+  print_vector(phi1, n); 
 
 	return 0; 	
 }

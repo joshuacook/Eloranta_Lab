@@ -115,28 +115,31 @@ int itp_method_test(int n,int print_mat){
   dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,H,&n,&d_zero,CayleyN,&n);
   // one*H*H'+zero*CayleyP_inv
   dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,H,&n,&d_zero,CayleyP_inv,&n);
+  printf("Generated matrix\n");
   print_matrix(CayleyN,n,n);
-  print_matrix(CayleyP_inv,n,n);
 
   err = 1;
 
  	// randomize phi
 
   random_vector(phi0,n);
+  printf("random vector\n");
   print_vector(phi0,n);
 
  	// take the Cayley form of H
   identity_matrix(I,n);
-  print_matrix(I,n,n);
 
   // CayleyN = (one*I*I-0.5*CayleyN)
+  printf("CayleyN of generated matrix\n");
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_neghalf,CayleyN,&n);
   print_matrix(CayleyN,n,n);
  	// CayleyP = (one*I*I+0.5*CayleyP)
+ 	printf("CayleyP of generated matrix\n");
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_poshalf,CayleyP_inv,&n);
   print_matrix(CayleyP_inv,n,n);
 
-// preInvert
+  // preInvert
+  printf("Inverse of CayleyP\n");
   inverse(CayleyP_inv,n);
   print_matrix(CayleyP_inv,n,n); 
 

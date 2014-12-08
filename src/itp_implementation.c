@@ -157,6 +157,7 @@ int itp_method_test(int n,int print_mat){
   print_vector(phi1,n);
   mu = dnrm2_(&n,phi1,&one);
   mu_inv = 1/mu;
+  
   printf("%f, %f\n\n", mu, mu_inv);
   dscal_(&n,&mu_inv,phi1,&one);
 // 	err = math.sqrt(2)*math.sqrt(abs(phi1.dot(H.dot(H)).dot(phi1)- (phi1.dot(H).dot(phi1))**2))

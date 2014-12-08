@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
 	int n = 6;
 	double A[n*n];
 
-  itp_method_test(4,1);
+  itp_method_test(2,1);
 	return 0;
 
 }
@@ -153,8 +153,11 @@ int itp_method_test(int n,int print_mat){
   while(err > eps){
   dgemv_(&no_trans,&n,&n, &d_one,CayleyN,&n,phi0,&one,&d_zero,phitemp,&one);
   dgemv_(&no_trans,&n,&n, &d_one,CayleyP_inv,&n,phitemp,&one,&d_zero,phi1,&one);
+  printf("phi1: ");
+  print_vector(phi1,n);
   mu = dnrm2_(&n,phi1,&one);
   mu_inv = 1/mu;
+  printf("%f, %f\n\n", mu, mu_inv);
   dscal_(&n,&mu_inv,phi1,&one);
 // 	err = math.sqrt(2)*math.sqrt(abs(phi1.dot(H.dot(H)).dot(phi1)- (phi1.dot(H).dot(phi1))**2))
   dgemv_(&no_trans,&n,&n, &d_one,HdotH,&n,phi1,&one,&d_zero,phitemp,&one);

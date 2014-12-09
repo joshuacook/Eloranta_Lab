@@ -6,14 +6,18 @@
 #include "blas_fortran_double.h"
 #include "blas_utilities.h"
 
-int itp_method_test(int n, int print_mat);
+#define DEBUG 0
+
+int itp_method_test(double * H, int n, int print_mat);
 
 
 int main(int argc, char* argv[]){
 	int n = 100;
 	double A[n*n];
+  random_matrix(H,n,n);
 
   // create matrix to be used for all
+  
 
   //--------------------- ITP Method Test  
   
@@ -52,10 +56,9 @@ int itp_method_test(int n,int print_mat){
   double err1;
   double err2;
   double eps = 10E-6;
- 	double H[n*n];
+  double I[n*n];
   double Htemp[n*n];
   double HdotH[n*n];
-  double I[n*n];
  	double CayleyN[n*n];
  	double CayleyP_inv[n*n];
  	double d_zero = 0.0;
@@ -76,10 +79,6 @@ int itp_method_test(int n,int print_mat){
 
  	// run test on a matrix of size n
  	printf("Find an eigenvector for an %d by %d matrix\n", n,n);
-  random_matrix(H,n,n);
-  if(print_mat==1){
-		print_matrix(H,n,n);
-	}
 
   // multiply H by its transpose to make it symmetric and thus Hermitian
   dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,H,&n,&d_zero,Htemp,&n);
@@ -101,7 +100,7 @@ int itp_method_test(int n,int print_mat){
   printf("CayleyN of generated matrix\n");
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,H,&n,I,&n,&d_zero,CayleyN,&n);
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_neghalf,CayleyN,&n);
-  print_matrix(CayleyN,n,n);
+  if (DEBUG) print_matrix(CayleyN,n,n);
  	// CayleyP = (one*I*I+0.5*CayleyP)
  	printf("CayleyP of generated matrix\n");
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,H,&n,I,&n,&d_zero,CayleyP_inv,&n);

@@ -14,7 +14,7 @@ int itp_method_test(double * H, int n, int print_mat);
 int main(int argc, char* argv[]){
 	int n = 100;
 	double A[n*n];
-  random_matrix(H,n,n);
+  random_matrix(A,n,n);
 
   // create matrix to be used for all
   
@@ -24,7 +24,7 @@ int main(int argc, char* argv[]){
   // start timer
 
   // call method
-  itp_method_test(2,1);  
+  itp_method_test(A,2,1);  
   // get first eigenvector
   // end timer
   // store time
@@ -48,7 +48,7 @@ int main(int argc, char* argv[]){
 
 }
 
-int itp_method_test(int n,int print_mat){
+int itp_method_test(double * H, int n,int print_mat){
 
 	// declare necessary variables
  	int i;

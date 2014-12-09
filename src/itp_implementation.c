@@ -13,8 +13,34 @@ int main(int argc, char* argv[]){
 	int n = 100;
 	double A[n*n];
 
-  itp_method_test(2,1);
+  // create matrix to be used for all
+
+  //--------------------- ITP Method Test  
+  
+  // start timer
+
+  // call method
+  itp_method_test(2,1);  
+  // get first eigenvector
+  // end timer
+  // store time
+  
+  //--------------------- ARPACK Method
+  // start timer
+  // call method
+  // get first eigenvector
+  // end timer
+  // store time
+  
+  //--------------------- LAPACK Method
+  // start timer
+  // call method
+  // get first eigenvector
+  // end timer
+  // store time
+  
 	return 0;
+
 
 }
 

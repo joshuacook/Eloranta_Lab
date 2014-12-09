@@ -16,7 +16,7 @@ int itp_method_test(int n, int print_mat);
 
 
 int main(int argc, char* argv[]){
-	int n = 6;
+	int n = 100;
 	double A[n*n];
 
   itp_method_test(2,1);
@@ -134,12 +134,12 @@ int itp_method_test(int n,int print_mat){
 
   // CayleyN = (one*I*I-0.5*CayleyN)
   printf("CayleyN of generated matrix\n");
-  dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,I,&n,&d_zero,CayleyN,&n);
+  dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,H,&n,I,&n,&d_zero,CayleyN,&n);
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_neghalf,CayleyN,&n);
   print_matrix(CayleyN,n,n);
  	// CayleyP = (one*I*I+0.5*CayleyP)
  	printf("CayleyP of generated matrix\n");
-  dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,I,&n,&d_zero,CayleyP_inv,&n);
+  dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,H,&n,I,&n,&d_zero,CayleyP_inv,&n);
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_poshalf,CayleyP_inv,&n);
   print_matrix(CayleyP_inv,n,n);
 
@@ -160,13 +160,19 @@ int itp_method_test(int n,int print_mat){
   
   printf("%f, %f\n\n", mu, mu_inv);
   dscal_(&n,&mu_inv,phi1,&one);
+  print_vector(phi1,n);
 // 	err = math.sqrt(2)*math.sqrt(abs(phi1.dot(H.dot(H)).dot(phi1)- (phi1.dot(H).dot(phi1))**2))
   dgemv_(&no_trans,&n,&n, &d_one,HdotH,&n,phi1,&one,&d_zero,phitemp,&one);
+  printf("phitemp: ");
+  print_vector(phitemp,n);
   err1 = ddot_(&n,phi1,&one,phitemp,&one);
+  printf("err1: %d\n", err1);
   dgemv_(&no_trans,&n,&n, &d_one,H,&n,phi1,&one,&d_zero,phitemp,&one);
   err2 = ddot_(&n,phi1,&one,phitemp,&one);
   err2 = err2 * err2;
+  printf("err2: %d\n", err2);
   err = sqrt(abs(err1)-err2);
+  printf("err: %d\n", err);
   dcopy_(&n,phi1,&one,phi0,&one);
   }
 

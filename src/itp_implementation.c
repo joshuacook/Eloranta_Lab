@@ -12,12 +12,24 @@ int itp_method_test(double * H, int n, int print_mat);
 
 
 int main(int argc, char* argv[]){
+
+  // Performance Testing
+  /*
+  struct timeval t0, t1;
+	unsigned int i;
+
+	gettimeofday(&t0, NULL);
+	for(i = 0; i < 100000; i++)
+		function_to_measure();
+	gettimeofday(&t1, NULL);
+	printf("Did %u calls in %.2g seconds\n", i, t1.tv_sec - t0.tv_sec + 1E-6 * (t1.tv_usec - t0.tv_usec);
+	*/
+
 	int n = 100;
 	double A[n*n];
-  random_matrix(A,n,n);
 
   // create matrix to be used for all
-  
+  random_matrix(A,n,n);
 
   //--------------------- ITP Method Test  
   
@@ -52,9 +64,7 @@ int itp_method_test(double * H, int n,int print_mat){
 
 	// declare necessary variables
  	int i;
-  double err;
-  double err1;
-  double err2;
+  double err, err1, err2, mu, mu_inv;
   double eps = 10E-6;
   double I[n*n];
   double Htemp[n*n];
@@ -65,8 +75,6 @@ int itp_method_test(double * H, int n,int print_mat){
   double d_neghalf = -0.5;
   double d_poshalf = 0.5;
   double d_one = 1.0;					 
- 	double mu;
-  double mu_inv;
   int one = 1;
   int two = 2;
   char no_trans='N';
@@ -78,56 +86,58 @@ int itp_method_test(double * H, int n,int print_mat){
   identity_matrix(I,n);
 
  	// run test on a matrix of size n
- 	printf("Find an eigenvector for an %d by %d matrix\n", n,n);
+ 	if (DEBUG) printf("Find an eigenvector for an %d by %d matrix\n", n,n);
 
   // multiply H by its transpose to make it symmetric and thus Hermitian
   dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,H,&n,&d_zero,Htemp,&n);
   dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,Htemp,&n,I,&n,&d_zero,H,&n);
-  printf("Generated matrix\n");
-  print_matrix(H,n,n);
+  if (DEBUG) printf("Generated matrix\n");
+	if (DEBUG) print_matrix(H,n,n);
 
   err = 1;
 
  	// randomize phi
 
   random_vector(phi0,n);
-  printf("random vector\n");
-  print_vector(phi0,n);
+  if (DEBUG) printf("random vector\n");
+  if (DEBUG) print_vector(phi0,n);
 
  	// take the Cayley form of H
 
   // CayleyN = (one*I*I-0.5*CayleyN)
-  printf("CayleyN of generated matrix\n");
+  if (DEBUG) printf("CayleyN of generated matrix\n");
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,H,&n,I,&n,&d_zero,CayleyN,&n);
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_neghalf,CayleyN,&n);
   if (DEBUG) print_matrix(CayleyN,n,n);
  	// CayleyP = (one*I*I+0.5*CayleyP)
- 	printf("CayleyP of generated matrix\n");
+ 	if (DEBUG) printf("CayleyP of generated matrix\n");
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,H,&n,I,&n,&d_zero,CayleyP_inv,&n);
   dgemm_(&no_trans,&no_trans,&n,&n,&n,&d_one,I,&n,I,&n,&d_poshalf,CayleyP_inv,&n);
-  print_matrix(CayleyP_inv,n,n);
+  if (DEBUG) print_matrix(CayleyP_inv,n,n);
 
   // preInvert
-  printf("Inverse of CayleyP\n");
+  if (DEBUG) printf("Inverse of CayleyP\n");
   inverse(CayleyP_inv,n);
-  print_matrix(CayleyP_inv,n,n); 
+  if (DEBUG) print_matrix(CayleyP_inv,n,n); 
 
   // iterate 
  	// repeatedly solve phi1 = CayleyP_inv*CayleyN*phi0 
   while(err > eps){
   dgemv_(&no_trans,&n,&n, &d_one,CayleyN,&n,phi0,&one,&d_zero,phitemp,&one);
   dgemv_(&no_trans,&n,&n, &d_one,CayleyP_inv,&n,phitemp,&one,&d_zero,phi1,&one);
-  printf("phi1: ");
-  print_vector(phi1,n);
+  if (DEBUG) printf("phi1: ");
+  if (DEBUG) print_vector(phi1,n);
   mu = dnrm2_(&n,phi1,&one);
   mu_inv = 1/mu;
   
-  printf("%f, %f\n\n", mu, mu_inv);
+  
+  // should probably write separate method for finding the error this logic is pretty complicated and hard to follow
+  if (DEBUG) printf("%f, %f\n\n", mu, mu_inv);
   dscal_(&n,&mu_inv,phi1,&one);
-  print_vector(phi1,n);
-// 	err = math.sqrt(2)*math.sqrt(abs(phi1.dot(H.dot(H)).dot(phi1)- (phi1.dot(H).dot(phi1))**2))
+  if (DEBUG) print_vector(phi1,n);
+	// 	err = math.sqrt(2)*math.sqrt(abs(phi1.dot(H.dot(H)).dot(phi1)- (phi1.dot(H).dot(phi1))**2))
   dgemv_(&no_trans,&n,&n, &d_one,HdotH,&n,phi1,&one,&d_zero,phitemp,&one);
-  printf("phitemp: ");
+  if (DEBUG) printf("phitemp: ");
   print_vector(phitemp,n);
   err1 = ddot_(&n,phi1,&one,phitemp,&one);
   printf("err1: %d\n", err1);

@@ -1,11 +1,16 @@
+/* This header contains multiple utility functions used in working within the BLAS framework */ 
+/* Stylistically, BLAS functions typically take pointers as input. These functions are taking the variables themselves. */
+
 #define NEWLINE printf("\n");
 
+// Function Declarations
 void print_matrix(double * A, int n, int m);
 void print_vector(double * A, int n);
 void random_matrix(double * A, int n, int m);
 void random_vector(double *A, int n);
 void identity_matrix(double * I, int n);
 
+// Matrix and Vector Generators for testing
 void random_matrix(double * A, int m, int n){
   time_t timer;
   int i;
@@ -16,15 +21,6 @@ void random_matrix(double * A, int m, int n){
     A[i] = drand48();
   }
 }
-
-void identity_matrix(double * I, int n){
-  int i;
-  
-  for(i = 0; i < n + 1; i++){
-    I[i*(n+1)] = 1;
-  } 
-} 
-
 void random_vector(double * A, int n){
   time_t timer;
   int i; 
@@ -35,7 +31,15 @@ void random_vector(double * A, int n){
     A[i] = drand48();
   } 
 } 
+void identity_matrix(double * I, int n){
+  int i;
+  
+  for(i = 0; i < n + 1; i++){
+    I[i*(n+1)] = 1;
+  } 
+} 
 
+// Printing Functions
 void print_vector(double * A, int n){
   int i;
   printf("<");
@@ -47,7 +51,6 @@ void print_vector(double * A, int n){
   NEWLINE;
   NEWLINE;
 }
-
 void print_matrix(double * A, int n, int m){
   int i,j;
   for (i = 0; i < m; i++){

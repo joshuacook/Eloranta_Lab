@@ -5,7 +5,13 @@
 
 struct complex {double re; double im;};  	/* a complex number */
 
-main()
+extern void zgeev_(char *jobvl, char *jobvr, int *n, struct complex<double> *a,
+		       int *lda, struct complex<double> *w, struct complex<double> *vl,
+		       int *ldvl, struct complex<double> *vr, int *ldvr,
+		       struct complex<double> *work, int *lwork, double *rwork,
+		       int *info);
+
+int main()
 {
 struct complex A[3][3], b[3], DUMMY[1][1], WORK[6];
 double AT[2*size*size];			/* for transformed matrix */

@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -14,16 +13,16 @@ int itp_method_test(double * H, int n, int print_mat);
 int main(int argc, char* argv[]){
 
   // Performance Testing
-  /*
+  
   struct timeval t0, t1;
 	unsigned int i;
 
 	gettimeofday(&t0, NULL);
 	for(i = 0; i < 100000; i++)
-		function_to_measure();
+		int a = 1 + 1;
 	gettimeofday(&t1, NULL);
 	printf("Did %u calls in %.2g seconds\n", i, t1.tv_sec - t0.tv_sec + 1E-6 * (t1.tv_usec - t0.tv_usec);
-	*/
+	
 
 	int n = 100;
 	double A[n*n];

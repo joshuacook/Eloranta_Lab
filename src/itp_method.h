@@ -1,15 +1,15 @@
 int itp_method_test(double * H, int n,int print_mat, int DEBUG){
 
-	// declare necessary variables
- 	int i;
+  // declare necessary variables
+  int i;
   double err, err1, err2, mu, mu_inv;
   double eps = 10E-6;
   double I[n*n];
   double Htemp[n*n];
   double HdotH[n*n];
- 	double CayleyN[n*n];
- 	double CayleyP_inv[n*n];
- 	double d_zero = 0.0;
+  double CayleyN[n*n];
+  double CayleyP_inv[n*n];
+  double d_zero = 0.0;
   double d_neghalf = -0.5;
   double d_poshalf = 0.5;
   double d_one = 1.0;					 
@@ -18,7 +18,7 @@ int itp_method_test(double * H, int n,int print_mat, int DEBUG){
   char no_trans='N';
   char trans='T';	
   double phi0[n];
- 	double phi1[n];
+  double phi1[n];
   double phitemp[n];
 
   identity_matrix(I,n);
@@ -30,7 +30,7 @@ int itp_method_test(double * H, int n,int print_mat, int DEBUG){
   dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,H,&n,H,&n,&d_zero,Htemp,&n);
   dgemm_(&no_trans,&trans,&n,&n,&n,&d_one,Htemp,&n,I,&n,&d_zero,H,&n);
   if (DEBUG) printf("Generated matrix\n");
-	if (DEBUG) print_matrix(H,n,n);
+ 	if (DEBUG) print_matrix(H,n,n);
 
   err = 1;
 

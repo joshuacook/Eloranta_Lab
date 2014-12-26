@@ -5,7 +5,7 @@ CC=gcc
 ifeq ($(UNAME), Darwin)
   CFLAGS = -g ../../OpenBLAS/libopenblas.a -lm -lpthread
 else
-  CFLAGS=-I /usr/include/openblas -L /usr/include/openblas -lopenblas -lpthread -lgfortran -llapack -lm 
+  CFLAGS=-I /usr/lib/openblas-base -L /usr/lib/openblas-base -lopenblas -lpthread -lgfortran -llapack -lm 
 endif
 
 %.o: %.c 

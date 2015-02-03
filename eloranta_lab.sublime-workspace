@@ -1,0 +1,315 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ra",
+				"raw_input"
+			],
+			[
+				"dia",
+				"diag_one"
+			],
+			[
+				"pl",
+				"player_one"
+			],
+			[
+				"row",
+				"row_sum"
+			],
+			[
+				"col",
+				"col_sum"
+			],
+			[
+				"gam",
+				"_game_board"
+			],
+			[
+				"pr",
+				"print_board"
+			],
+			[
+				"_",
+				"_listr"
+			],
+			[
+				"prin",
+				"print_permutations"
+			],
+			[
+				"temp",
+				"temp_print"
+			],
+			[
+				"ar",
+				"ary_print"
+			],
+			[
+				"print",
+				"print_perm"
+			],
+			[
+				"get",
+				"get_balance"
+			],
+			[
+				"w",
+				"wallet"
+			],
+			[
+				"_b",
+				"_bank"
+			],
+			[
+				"my",
+				"myMaximum"
+			],
+			[
+				"gr",
+				"grades"
+			],
+			[
+				"vec",
+				"vec_length"
+			],
+			[
+				"ve",
+				"vec_length"
+			],
+			[
+				"student",
+				"student_name"
+			],
+			[
+				"you",
+				"your-road"
+			],
+			[
+				"key",
+				"key-not-found"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 267.0,
+		"selected_items":
+		[
+			[
+				":w",
+				":w - Save"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/joshuacook/src/Eloranta_Lab",
+		"/Users/joshuacook/src/Eloranta_Lab/ITP_Eigensolver",
+		"/Users/joshuacook/src/Eloranta_Lab/ITP_Eigensolver/src",
+		"/Users/joshuacook/src/Eloranta_Lab/py"
+	],
+	"file_history":
+	[
+		"/Users/joshuacook/src/Eloranta_Lab/ITP_Eigensolver/src/makefile",
+		"/Users/joshuacook/src/pelican-blog/content/posts/2015-01-21-ATA-solve.md",
+		"/Users/joshuacook/src/pelican-blog/pelican-octopress-theme/sass/main.scss",
+		"/Users/joshuacook/src/pelican-blog/pelican-plugins/latex/math.py",
+		"/Users/joshuacook/src/pelican-blog/pelican-plugins/test_data/themes/notmyidea/templates/analytics.html",
+		"/Users/joshuacook/src/pelican-blog/pelican-plugins/test_data/themes/notmyidea/templates/article_infos.html",
+		"/Users/joshuacook/src/pelican-blog/pelican-plugins/latex/pelican_mathjax_markdown_extension.py",
+		"/Users/joshuacook/Library/Application Support/Sublime Text 3/Packages/User/myAlign",
+		"/Users/joshuacook/src/pelican-blog/content/posts/2015-01-12-toward-the-zernike-polynomials.md",
+		"/Users/joshuacook/src/pelican-blog/content/posts/2014-12-05-applying-cobweb-plot.md",
+		"/Users/joshuacook/src/pelican-blog/content/posts/2014-12-04-the-cobweb-plot.md",
+		"/Users/joshuacook/src/pelican-blog/content/posts/2014-12-06-simple-chaos.md",
+		"/Users/joshuacook/src/pelican-blog/content/posts/pedantic-proof.md",
+		"/Users/joshuacook/src/projects/advanced_data_structures/src/06-tic-tac-toe-source.c",
+		"/Users/joshuacook/src/projects/advanced_data_structures/py/06-tic-tac-toe.py",
+		"/Users/joshuacook/src/projects/6_S096/dev/lec2_mem.c",
+		"/Users/joshuacook/src/projects/6_S096/resources/calendar/index.md",
+		"/Users/joshuacook/src/projects/6_S096/dev/diagnostic.c",
+		"/Users/joshuacook/src/projects/6_S096/dev/is_prime.c",
+		"/Users/joshuacook/src/projects/6_S096/src/hello.c",
+		"/Users/joshuacook/src/projects/6_S096/src/first_example.py",
+		"/Users/joshuacook/src/projects/6_S096/src/first_example.c",
+		"/Users/joshuacook/src/projects/lcthw/src/print_permuation.py",
+		"/Users/joshuacook/src/projects/lcthw/src/is_prime.c",
+		"/Users/joshuacook/src/projects/lcthw/src/print_permuation.c",
+		"/Users/joshuacook/src/projects/lpthw/dsa_2_3_2.py",
+		"/Users/joshuacook/src/tenkai-suru-api/src/tenkai_suru/database/migrations.clj",
+		"/Users/joshuacook/src/tenkai-suru-api/src/tenkai_suru/tasks/rollback.clj",
+		"/Users/joshuacook/src/tenkai-suru-api/src/tenkai_suru/tasks/migrate.clj",
+		"/Users/joshuacook/src/tenkai-suru-api/spec/tenkai_suru/database/migrations_spec.clj",
+		"/Users/joshuacook/src/tenkai-suru-api/resources/migrations/20150108171635-bar.up.sql",
+		"/Users/joshuacook/src/tenkai-suru-api/resources/migrations/20150108171629-foo.down.sql",
+		"/Users/joshuacook/src/tenkai-suru-api/resources/migrations/20150108171629-foo.up.sql",
+		"/Users/joshuacook/src/tenkai-suru-api/resources/migrations/20150108171635-bar.down.sql",
+		"/Users/joshuacook/src/projects/lpthw/dsa_2_3_1.py",
+		"/Users/joshuacook/src/projects/lpthw/dsa_2_3_2",
+		"/Users/joshuacook/src/projects/advanced_data_structures/data/02-loops.txt",
+		"/Users/joshuacook/src/projects/advanced_data_structures/py/04-student_and_class_grading.py",
+		"/Users/joshuacook/src/projects/advanced_data_structures/py/02-loops.py",
+		"/Users/joshuacook/src/koans/python_koans/python2/koans/about_asserts.py",
+		"/Users/joshuacook/src/koans/clojure-koans/src/koans/06_functions.clj",
+		"/Users/joshuacook/src/koans/clojure-koans/src/koans/05_maps.clj",
+		"/Users/joshuacook/src/clojure-koans/src/koans/03_vectors.clj",
+		"/Users/joshuacook/src/clojure-koans/src/koans/04_sets.clj",
+		"/Users/joshuacook/src/clojure-koans/src/koans/02_lists.clj",
+		"/Users/joshuacook/src/clojure-koans/src/koans/01_equalities.clj",
+		"/Users/joshuacook/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Volumes/ohonetwo/grive/Courses/MATH382/notebooks/hw-7-output.pdf",
+		"/Users/joshuacook/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/joshuacook/Library/Application Support/Sublime Text 3/Packages/User/Distraction Free.sublime-settings"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"print",
+			"'.",
+			"migrations",
+			"("
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"'+str(",
+			"'+"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "eloranta_lab.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"untitled"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 275.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

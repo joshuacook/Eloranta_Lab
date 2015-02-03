@@ -1,5 +1,4 @@
-
-# Basics
+# Background
 
 At the molecular level, the movement of water is defined by quantum mechanics.
 The movement of each molecule in space-time is modeled by a single energy
@@ -19,6 +18,8 @@ largest eigenvector on $\hat{H}$. The process is then repeated to find the next
 largest eigenvector and so on.
 
 $$E_0\approx \hat{H}^kr_0,\ k\to\infty$$
+
+# Description of the Problem
 
 Power methods already involve numerous numerical calculations. What may go
 unnoticed is that in the process of finding each vector, calculations are
@@ -50,5 +51,3 @@ subspace for the pursuit of the next largest eigenvector. Through the process of
 orthogonalization, then eigenvectors sought are gradually removed from the
 subset and thus from the ongoing calculations used in the solution.
 
-
-    

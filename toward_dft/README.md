@@ -9,3 +9,7 @@ An eigenvector algorithm.
 2. At each iteration, multiply by the matrix and normalize
 3. The iteration converges on the largest eigenvector
 
+## Next
+Finding the eigenvalue.
+
+Finding the next largest eigenvector. 

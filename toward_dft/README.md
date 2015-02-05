@@ -19,9 +19,14 @@ An eigenvector algorithm.
     B = np.array([[2,-12],[1,-5]])
 
     In [3]:
-    print numpy.transpose(eig(B)[1])
-    [[ 0.9701425   0.24253563]
-     [ 0.9486833   0.31622777]]
+    eig(B)[1]
+    array([[ 0.9701425 ,  0.9486833 ],
+           [ 0.24253563,  0.31622777]])
+
+    In [4]:
+    eig(B)[0]
+    array([-1., -2.])
+
 
 Algorithm in C converges to 0.948683, 0.316228 in 2 steps. 
 

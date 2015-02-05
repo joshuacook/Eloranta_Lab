@@ -23,6 +23,8 @@ An eigenvector algorithm.
     [[ 0.9701425   0.24253563]
      [ 0.9486833   0.31622777]]
 
+Algorithm in C converges to 0.948683, 0.316228 in 2 steps. 
+
 ## Next
 Finding the eigenvalue.
 

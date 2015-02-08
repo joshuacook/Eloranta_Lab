@@ -10,7 +10,7 @@
 #include "/usr/local/Cellar/openblas/0.2.12/include/cblas.h"
 #include "blas_fortran_double.h"
 
-void print_matrix(double * matrix);
+void print_matrix(double * matrix, int n);
 
 int main(int argc, char* argv[]){
   printf("Factor a Matrix into its upper triangular portion\n");
@@ -28,8 +28,12 @@ int main(int argc, char* argv[]){
 
   print_matrix(A);
 
-  for (int i = 0; i < n; i++){
-    *(U + i*n) = *(A + i*n);
+  for (int col = 0; col < n; col++){
+    *(U + col*n) = *(A + col*n);
+  }
+
+  for (int i = 1; i < n; i++){
+
   }
 
   print_matrix(U);
@@ -38,11 +42,11 @@ int main(int argc, char* argv[]){
 
 }
 
-void print_matrix(double * matrix, n){
+void print_matrix(double * matrix, int n){
   printf("\n");
-  for (int i = 0; i < n; i++){
-    for (int j = 0; j < n; j++){
-      printf("\t%f",*(matrix+j*n+i));
+  for (int col = 0; col < n; col++){
+    for (int row = 0; row < n; row++){
+      printf("\t%f",*(matrix+row*3+col)); // *(matrix+row*3+col) used to travers column major matrix
     }
     printf("\n");
   }

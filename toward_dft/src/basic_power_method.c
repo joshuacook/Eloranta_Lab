@@ -45,23 +45,28 @@ int main(int argc, char* argv[])
     // Perform matrix multiplication
     // row_order  transform lenY lenX alpha  a  lda  X  incX  beta  Y, incY 
     // y := alpha*A*x + beta*y
+    printf("Multiply A*x to get y\n");
     dgemv_(&no_trans, &two, &two, &alpha, B, &two, x, &one, &beta, y, &one);
     
     // Normalize Vector
     // elements X incX Y incY 
     // x = a*x
-    mu = sqrt(ddot_ (&two, y, &one, y, &one));
+    printf("Calculate mu, the magnitude of the vector, y\n");
+    mu = sqrt(ddot_ (&two, y, &one, y, &one));    
     mu_inv = 1/mu;
     printf("mu: %f\n",mu);
 
     // elements alpha X intX Y intY(y:= a*x+y)
     printf("y: %f, %f\n",y[0], y[1]);
+    printf("Normalize the vector y\n");
     dscal_(&two, &mu_inv, y, &one);
     
     // Display result
+    printf("Display new y\n");
     printf("y: %f, %f\n",y[0], y[1]);   
     
-    // Copy into x for next iteration    
+    // Copy into x for next iteration  
+
     dcopy_(&two, y,&one, x,&one);
   }
 

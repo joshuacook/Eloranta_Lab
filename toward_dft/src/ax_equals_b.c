@@ -21,14 +21,20 @@ int main(int argc, char* argv[]){
  
   double U[n*n];                // to hold factored matrix
 
+  random_matrix(A, n, n);
+
   print_matrix(A, n, n);
 
   for (int col = 0; col < n; col++){
     *(U + col*n) = *(A + col*n);
   }
 
-  for (int i = 1; i < n; i++){
-
+  for (int row = 1; row < n; row++){
+    for (int col = 0 + row - 1; col < n; col++){
+      double num = *(A + row + (row-1)*n);
+      double dnm = *(A + row - 1 + (row-1)*n);
+      *(U + row + col*n) = A[row + col*n] - A[row -1 + col*n]*(num/dnm);
+    } 
   }
 
   print_matrix(U, n, n);

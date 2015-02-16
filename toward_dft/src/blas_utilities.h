@@ -47,7 +47,7 @@ void identity_matrix(double * eye, int n){
 // Printing Functions
 void print_vector(double * A, int n){
   int i;
-  printf("(");
+  printf("\t(");
   for (i = 0; i < n-1; i++){
     printf("%f, ", *(A + i));
   }

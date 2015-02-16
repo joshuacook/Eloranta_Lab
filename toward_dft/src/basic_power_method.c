@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
 
   double A[n*n];                 // matrix to be examined
 
-  random_matrix(A, n, n);
+  random_matrix(A, n, n, 1234);
   print_matrix(A, n, n);
      
   double alpha = 1.0;           // scaling factor
@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
   // Will hold resulting vector
   double y[2] ;
 
-  for (i = 0; i < 4; i++){
+  for (i = 0; i < 20; i++){
     // Perform matrix multiplication
     // row_order  transform lenY lenX alpha  a  lda  X  incX  beta  Y, incY 
     // y := alpha*A*x + beta*y

@@ -7,18 +7,24 @@
 
 
 // Function Declarations
-void random_matrix(double * A, int n, int m);
+void random_matrix(double * A, int n, int m, float seed);
 void print_matrix(double * A, int n, int m);
 void print_vector(double * A, int n);
 void random_vector(double * A, int n);
 void identity_matrix(double * eye, int n);
 
 // Matrix and Vector Generators for testing
-void random_matrix(double * A, int m, int n){
-  time_t timer;
-  int i;
+void random_matrix(double * A, int m, int n, float seed){
+  
+  if (seed == 0){
+    time_t timer;
+    srand48(time(&timer));
+  }
+  else {
+    srand48(seed);
+  }
 
-  srand48(time(&timer));
+  int i;
 
   for (i = 0; i < m*n; i++){
     *(A + i) = drand48();
@@ -66,5 +72,4 @@ void print_matrix(double * A, int n, int m){
   } 
   NEWLINE;
 } 
-
 

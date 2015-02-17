@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
   print_vector(x,n);
   
   // Will hold resulting vector
-  double y[2] ;
+  double y[n] ;
 
   for (i = 0; i < 20; i++){
     // Perform matrix multiplication

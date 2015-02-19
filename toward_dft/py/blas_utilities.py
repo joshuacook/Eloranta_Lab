@@ -1,10 +1,15 @@
+from numpy import *
+from numpy.random import *
+
 class blas():
     def main(self):     
-        print("A simple power method iteration to find largest eigenvector.")
+        return 
 
     def random_matrix(self, rows, cols):
       print("Build a random_matrix")
-      return 
+      A = rand(rows,cols)
+
+      return A
 
     def print_matrix(rows, cols):
       return

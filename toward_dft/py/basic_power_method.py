@@ -1,23 +1,8 @@
 from numpy import *
+from blas_utilities import *
 
-class blas():
-    def main(self):     
-        print("A simple power method iteration to find largest eigenvector.")
-
-    def random_matrix(rows, cols):
-      return 
-
-    def print_matrix(rows, cols):
-      return
-
-    def print_vector(n):
-      return
-
-    def random_vector(n):
-      return
-
-    def identity_matrix(n):
-      return
 
 if __name__ == '__main__':
-    blas().main()
+    my_blas = blas()
+    my_blas.random_matrix(4,4)
+    

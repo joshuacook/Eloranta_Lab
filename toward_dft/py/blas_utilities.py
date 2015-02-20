@@ -12,6 +12,7 @@ class blas():
       return A
 
     def print_matrix(rows, cols):
+      print("Printing a matrix ")
       return
 
     def print_vector(n):

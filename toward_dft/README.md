@@ -27,10 +27,12 @@ An eigenvector algorithm.
     eig(B)[0]
     array([-1., -2.])
 
+Generalize to larger matrices.
+
 
 Algorithm in C converges to 0.948683, 0.316228 in 2 steps. 
 
-## Next
-Finding the eigenvalue.
+## Finding the eigenvalue
+To find the eigenvalue we need an algorithm for solving the matrix equation Ax=b. We have the matrix
 
-Finding the next largest eigenvector. 
+## Finding the next largest eigenvector. 

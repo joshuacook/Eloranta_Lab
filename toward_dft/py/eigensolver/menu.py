@@ -32,10 +32,15 @@ class Menu:
 
   def show_problems(self, notes=None):
     if not notes:
-      problems = self.Notebook.problems
+      problems = self.notebook.problems
       for problem in problems:
-        print("{0}: {1}\n{2}".format(
+        print("{0}: created: {1} dimension: {2}".format(
           problem.id, problem.creation_date, problem.dimension))
+
+  def add_problem(self):
+    dimension = input("Enter a dimension: ")
+    self.notebook.new_problem(dimension)
+    print "Added a new problem of dimension " + str(dimension)
   
   def quit(self):
     print("Thank you for using your notebook today.")

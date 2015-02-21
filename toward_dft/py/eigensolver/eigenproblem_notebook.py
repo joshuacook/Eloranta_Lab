@@ -15,7 +15,7 @@ class Eigenproblem:
     self.vectors = []
     global last_id
     last_id += 1
-    self.if = last_id
+    self.id = last_id
 
   def random_operator(self):
     rando = rand(self.dimension, self.dimension)

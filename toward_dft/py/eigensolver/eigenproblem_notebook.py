@@ -2,6 +2,8 @@ from numpy import *
 from numpy.random import rand
 import datetime
 
+last_id = 0
+
 class Eigenproblem:
   '''Represent an eigenproblem to be solved. 
   Typically we will be given an Hermitian operator and we will solve it by various methods.'''
@@ -11,6 +13,9 @@ class Eigenproblem:
     self.creation_date = datetime.date.today()
     self.dimension = dimension
     self.vectors = []
+    global last_id
+    last_id += 1
+    self.if = last_id
 
   def random_operator(self):
     rando = rand(self.dimension, self.dimension)

@@ -76,6 +76,10 @@ int main(int argc, char* argv[])
     // Display result
     printf("\tDisplay new y\n");
     print_vector(y,n);
+
+    // Estimate the corresponding eigenvalue
+    printf("Estimated corresponding eigenvalue\n");
+    
     
     // Copy into x for next iteration  
 

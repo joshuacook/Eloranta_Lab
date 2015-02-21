@@ -1,5 +1,23 @@
 from numpy import *
-from numpy.random import *
+from numpy.random import rand
+import datetime
+
+class Eigenproblem:
+  '''Represent an eigenproblem to be solved. 
+  Typically we will be given an Hermitian operator and we will solve it by various methods.'''
+
+  def __init__(self, dimension):
+    '''Initialize an eigenproblem with a specific dimension.'''
+    self.creation_date = datetime.date.today()
+    self.dimension = dimension
+
+  def random_operator(self):
+    rando = rand(self.dimension, self.dimension)
+    self.operator = rando
+
+  def print_operator(self):
+    print self.operator
+    
 
 class blas():
     def main(self):     

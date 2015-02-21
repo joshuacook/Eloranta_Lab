@@ -8,7 +8,9 @@ class Menu:
     self.choices = {
       1: self.show_problems,
       2: self.add_problem,
-      3: self.quit
+      3: self.random_operator,
+      4: self.random_operator, # self.print_operator,
+      5: self.quit
     }
 
   def display_menu(self):
@@ -16,7 +18,9 @@ class Menu:
       Notebook Menu
       1. Show all Problems
       2. Add Problem
-      3. Quit 
+      3. Generate Random Operator
+      4. Print Operator
+      5. Quit 
     """)
 
   def run(self):
@@ -41,6 +45,12 @@ class Menu:
     dimension = input("Enter a dimension: ")
     self.notebook.new_problem(dimension)
     print "Added a new problem of dimension " + str(dimension)
+
+  def random_operator(self):
+    id = input("Enter a problem: ")    
+    for problem in self.notebook.problems:
+      if str(problem.id) == id:
+        self.problem.random_operator() 
   
   def quit(self):
     print("Thank you for using your notebook today.")

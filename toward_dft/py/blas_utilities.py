@@ -30,6 +30,15 @@ class Eigenproblem:
   def identity_matrix(n):
       return
 
+class Problem_Notebook(object):
+  """Initialize a notebook with an empty list."""
+  def __init__(self):
+    self.problems = []
+
+  def new_problem(self, dimension):
+    self.problems.append(Eigenproblem(dimension))
+  
+
 if __name__ == "__main__":
   eig = Eigenproblem(4)
   eig.random_operator()

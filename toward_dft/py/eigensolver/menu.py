@@ -9,7 +9,7 @@ class Menu:
       1: self.show_problems,
       2: self.add_problem,
       3: self.random_operator,
-      4: self.random_operator, # self.print_operator,
+      4: self.print_operator,
       5: self.quit
     }
 
@@ -49,8 +49,15 @@ class Menu:
   def random_operator(self):
     id = input("Enter a problem: ")    
     for problem in self.notebook.problems:
-      if str(problem.id) == id:
-        self.problem.random_operator() 
+      if str(problem.id) == str(id):
+        problem.random_operator() 
+
+  def print_operator(self):
+    id = input("Enter a problem: ") 
+    for problem in self.notebook.problems:
+      if str(problem.id) == str(id):
+        problem.print_operator()
+
   
   def quit(self):
     print("Thank you for using your notebook today.")

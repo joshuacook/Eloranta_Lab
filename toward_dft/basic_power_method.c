@@ -2,7 +2,17 @@
 #include <stdlib.h>
 #include <math.h>
 #include "/usr/local/Cellar/openblas/0.2.12/include/cblas.h"
-#include "/home/joshuacook/src/ITP_Eigensolver/src/blas_fortran_double.h"
+#include "/Users/joshuacook/src/Eloranta_Lab/my_blas/blas_fortran_double.h"
+
+// FORTRAN Routines used
+// dgemv_dgemv_(&no_trans, &two, &two, &alpha, B, &two, x, &one, &beta, y, &one);
+// y := alpha*A*x + beta*y
+
+// dscal_(&two, &mu_inv, y, &one);
+// x = a*x
+
+// dcopy_(&two, y,&one, x,&one);
+
 
 int main(int argc, char* argv[])
 {
@@ -11,35 +21,48 @@ int main(int argc, char* argv[])
 
   double B[2*2] = 
     {  2,  1,
-     -12,  -5};
+     -12,  -5};                 // matrix to be examined
      
-  double alpha = 1.0;
-  double beta = 1.0;           
-  double mu;
-    double mu_inv;
-    int one = 1;
-    int two = 2;
-    char no_trans='N';           
+  double alpha = 1.0;           // scaling factor
+  double beta = 1.0;            // scaling factor 
+  double mu;                    // norm
+  double mu_inv;                // inverse norm
+
+  int one = 1;                  // fortran requires pointers
+  int two = 2;
+  char no_trans='N';                    
+
+  // Initialize and display a random vector 
   double x[2] ; 
   x[0] = rand()%10;
   x[1] = rand()%10;
   printf("x: %f, %f\n",x[0], x[1]);
   
+  // Will hold resulting vector
   double y[2] ;
 
-  for (i = 0; i < 100; i++){
-          // row_order  transform lenY lenX alpha  a  lda  X  incX  beta  Y, incY 
+  for (i = 0; i < 4; i++){
+    // Perform matrix multiplication
+    // row_order  transform lenY lenX alpha  a  lda  X  incX  beta  Y, incY 
+    // y := alpha*A*x + beta*y
     dgemv_(&no_trans, &two, &two, &alpha, B, &two, x, &one, &beta, y, &one);
-      // elements X incX Y incY 
+    
+    // Normalize Vector
+    // elements X incX Y incY 
+    // x = a*x
     mu = sqrt(ddot_ (&two, y, &one, y, &one));
     mu_inv = 1/mu;
-        printf("mu: %f\n",mu);
-      // elements alpha X intX Y intY(y:= a*x+y)
+    printf("mu: %f\n",mu);
+
+    // elements alpha X intX Y intY(y:= a*x+y)
     printf("y: %f, %f\n",y[0], y[1]);
     dscal_(&two, &mu_inv, y, &one);
+    
+    // Display result
     printf("y: %f, %f\n",y[0], y[1]);   
+    
+    // Copy into x for next iteration    
     dcopy_(&two, y,&one, x,&one);
-    printf("y: %f, %f\n",y[0], y[1]);
   }
 
 

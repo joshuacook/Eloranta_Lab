@@ -16,7 +16,7 @@ We will use `numpy` and it's build-in array functionality to represent functions
 ~~~
 
 import numpy as np
-indep_vec = np.linespace(0,1,100)
+indep_vec = np.linspace(0,1,101)
 # indep_vec is a discrete representation 
 # of the closed interval [0,1]
 

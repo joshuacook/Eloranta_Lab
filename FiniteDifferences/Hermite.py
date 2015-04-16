@@ -10,7 +10,7 @@ h_ = 6.55E-34
 alpha = np.sqrt((k*mu)/h_**2)
 
 #  Build a Linear Function
-H_0 = lambda x: 1
+H_0 = lambda x: git1
 H_1 = lambda x: 2*x*np.sqrt(alpha)
 H_2 = lambda x: 4*x*np.sqrt(alpha)- 2*x*np.sqrt(alpha)
 H_3 = lambda x: 8*(x*np.sqrt(alpha))**3 - 12*x*np.sqrt(alpha)

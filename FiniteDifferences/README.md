@@ -3,7 +3,7 @@
 ## Prelimiaries
 Consdider the derivative:
 
-f'(x)=lim(h to 0) (f(x+h)-f(x))/h
+    f'(x)=lim(h to 0) (f(x+h)-f(x))/h
 
 ### Issues with computational representations
 
@@ -11,7 +11,7 @@ f'(x)=lim(h to 0) (f(x+h)-f(x))/h
 1.  What does it mean h goes to O?
 
 ##  Discrete Representation of Functions
-We will use `numpy' and it's build-in array functionality to represent functions as vectors.
+We will use `numpy` and it's build-in array functionality to represent functions as vectors.
 
 ~~~
 
@@ -33,12 +33,11 @@ g = lambda x: x**2
 # f: [0,1] to REALS
 linear_func = f(indep_vec)
 # g: [0,1] to REALS
-guad_func = g(indep_vec)
+quad_func = g(indep_vec)
 
 ~~~
 
 ##  Next
-1.  Build arrays to represent functions
 1.  Calculate first and second derivatives of functions using finite differences
 1.  Plot first and second derivatives
 1.  Solve Time-Dependent Schrodinger using finite differencing techniques

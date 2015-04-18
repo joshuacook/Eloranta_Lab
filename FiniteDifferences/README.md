@@ -10,6 +10,8 @@ Consdider the derivative:
 1.  Can't have a function f: REALS to REALS.  Can't have a continuous function. Computers require discrete representation.
 1.  What does it mean `h` goes to `0`?
 
+[test](test.htm)
+
 ##  Discrete Representation of Functions
 We will use `numpy` and it's build-in array functionality to represent functions as vectors.
 

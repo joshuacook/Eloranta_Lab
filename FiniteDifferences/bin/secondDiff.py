@@ -5,7 +5,7 @@ import scipy.linalg as sla
 import scipy.sparse as sprs
 from sympy.abc import w,x,y,z
 
-def secondDiff(type='D',n=10,sparse=False):
+def secondDiff(type,n=10,sparse=False):
     '''
     secondDiff Create finite difference model matrix.
     D = secondDiff(TYPE,N,SPARSE) creates model matrix TYPE of size N-by-N.
@@ -20,21 +20,21 @@ def secondDiff(type='D',n=10,sparse=False):
 
     e = np.ones(n)
     e_off = np.ones(n-1)
-    D = sprs.diags([-e_off,2*e,-e_off],[-1,0,1])
+    D = sprs.diags([e_off,-2*e,e_off],[-1,0,1])
 
-    if type == 'D': 
+    if str(type) == 'D': 
         D = D
-    if type == 'M':
+    if str(type) == 'M':
         D = sprs.csr_matrix(D)
-        D[0,0] = 1
-    if type == 'R': 
+        D[0,0] = -1
+    if str(type) == 'R': 
         D = sprs.csr_matrix(D)
-        D[0,0] = 1
-        D[n-1,n-1] = 1
-    if type == 'C':
+        D[0,0] = -1
+        D[n-1,n-1] = -1
+    if str(type) == 'C':
         D = sprs.csr_matrix(D)
-        D[0,n-1] = -1
-        D[n-1,0] = -1
+        D[0,n-1] = 1
+        D[n-1,0] = 1
 
 
     if sparse == False:

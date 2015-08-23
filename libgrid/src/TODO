@@ -1,0 +1,8 @@
+kinetic energy propagate cn issues:
+
+3D cn_nbc is not correct
+2D corrected
+1D not correct
+
+also pbc needs to be checked (Sherman-Morrison). fft propagation routines are OK
+but cannot be used in 2D cylindrical coords.

@@ -1,0 +1,12 @@
+Library for Orsay-Trento helium DFT.
+Review make.conf for correct compilation parameters.
+
+Needs: libgrid and fftw.
+
+List of people who contributed to the code:
+
+1) Lauri Lehtovaara
+2) David Mateo
+3) Jussi Eloranta
+
+Project partly funded by National Science Foundation grants CHE-0949057, CHE-1262306 and DMR-1205734.

@@ -10,5 +10,3 @@ endif
 
 %.o: %.c 
 	$(CC) -c -o $@ $< $(CFLAGS)
-	
-	

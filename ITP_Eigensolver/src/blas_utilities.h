@@ -1,6 +1,8 @@
 /* This header contains multiple utility functions used in working within the BLAS framework */ 
 /* Stylistically, BLAS functions typically take pointers as input. These functions are taking the variables themselves. */
 
+#include <time.h>
+
 #define NEWLINE printf("\n");
 
 // Function Declarations
